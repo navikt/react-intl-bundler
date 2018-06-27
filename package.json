@@ -1,0 +1,31 @@
+{
+  "name": "nav-react-intl-bundler",
+  "version": "1.0.0",
+  "description": "Package for building react-intl message-bundles.",
+  "main": "dist/index.js",
+  "bin": {
+    "react-intl-bundler": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config ./test/jest.config.json"
+  },
+  "author": "Steffen Hageland",
+  "license": "MIT",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "js-logger": "^1.4.1"
+  },
+  "devDependencies": {
+    "@types/argparse": "^1.0.34",
+    "@types/jest": "^23.1.0",
+    "@types/node": "^10.3.2",
+    "@types/react": "^16.3.17",
+    "@types/react-intl": "^2.3.8",
+    "jest": "^23.1.0",
+    "react": "^16.4.0",
+    "react-intl": "^2.4.0",
+    "ts-jest": "^22.4.6",
+    "typescript": "^2.9.1"
+  }
+}
