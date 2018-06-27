@@ -1,5 +1,7 @@
 # nav-react-intl-bundler
 
+[![CircleCI](https://circleci.com/gh/navikt/react-intl-bundler.svg?style=svg)](https://circleci.com/gh/navikt/react-intl-bundler)
+
 This module reads a set of text-files and creates a [react-intl](https://github.com/yahoo/react-intl) 
 message-bundle containing all the texts. The name of the file is used as message-ID, and the content
 of the file will be the message. Together with the bundle there will be a message-ID-lookup, which can be imported
