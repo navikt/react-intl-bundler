@@ -1,4 +1,4 @@
-# nav-react-intl-bundler
+# nav-react-intl-bundler (WIP)
 
 [![CircleCI](https://circleci.com/gh/navikt/react-intl-bundler.svg?style=svg)](https://circleci.com/gh/navikt/react-intl-bundler)
 
@@ -40,10 +40,10 @@ import { FormattedMessage } from 'react-intl';
 import messages from './example/texts-built/frontpage'
 
 const MyFrontpage = () => (
-    <arcticle>
+    <article>
         <h1><FormattedMessage id={messages.exampleTitle}/></h1>
         <p><FormattedMessage id={messages.exampleText}/></p>
-    </arcticle>
+    </article>
 );
 ```
 
@@ -51,7 +51,7 @@ const MyFrontpage = () => (
 
 Currently multiple languages is not supported. But this is a feature we might want in the future. Currently the
 standard build will assume norwegian locale, but this can be overriden using a command-line argument when building
-the bundle, to set your locale.
+the bundle, to set your locale...
 
 ## Development
 
@@ -59,4 +59,4 @@ Hvordan komme i gang med utvikling
 
 ## Inqueries
 
-For inquries please create a GitHub-issu. 
+For inquries please create a GitHub-issue. For NAV internal inqueries please contact Team PUS on slack at #pus.
