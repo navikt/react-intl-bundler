@@ -1,9 +1,10 @@
 const texts = {
     nb: {
-        exampleText: "Hello, World!",
-        exampleTitle: "My frontpage",
-        frontpageExampleText: "Frontpage example text",
-        frontpageExampleTitle: "Frontpage example title"
+        'example-text': "Hello, World!",
+        'example-title': "My frontpage",
+        'frontpage-example-text': "Frontpage example text",
+        'frontpage-example-title': "Frontpage example title"
     }
 };
+
 export default texts;

@@ -6,6 +6,8 @@ interface IO {
     getAllFilepaths(directory: string): string[];
     getFileContent(file: string): string;
     writeFile(path: string, content: string);
+    getFilesInFolder(folder: string): string[];
+    getSubfoldersInFolder(folder: string): string[];
 }
 
 export class IOImpl implements IO {
@@ -23,12 +25,24 @@ export class IOImpl implements IO {
             .reduce((acc, cur) => acc.concat(cur), [])
     }
 
+    getFilesInFolder(directory: string): string[] {
+        return fs.readdirSync(directory)
+            .filter(file => fs.lstatSync(path.join(directory, file)).isFile())
+    }
+
+    getSubfoldersInFolder(directory: string): string[] {
+        return fs.readdirSync(directory)
+            .filter(file => fs.lstatSync(path.join(directory, file)).isDirectory())
+    }
+
     getFileContent(file: string): string {
         return fs.readFileSync(file, "utf-8");
     }
 
     writeFile(filePath: string, content: string) {
-        fs.mkdirSync(path.parse(filePath).dir);
+        if (!fs.existsSync(path.parse(filePath).dir)) {
+            fs.mkdirSync(path.parse(filePath).dir);
+        }
         fs.writeFileSync(filePath, content, { encoding: "utf8" })
     }
 }

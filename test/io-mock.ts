@@ -12,6 +12,14 @@ class IOMock implements IO {
     writeFile(path: string, content: string) {
         return;
     }
+
+    getFilesInFolder(folder: string): string[] {
+        return [];
+    }
+
+    getSubfoldersInFolder(folder: string): string[] {
+        return [];
+    }
 }
 
 export default IOMock;

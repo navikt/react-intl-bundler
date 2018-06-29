@@ -3,7 +3,8 @@ import * as Logger from 'js-logger';
 import * as path from 'path';
 import { IOImpl } from "./io";
 import createMessageBundle from "./message-bundler";
-import {prettyMessageBundle} from "./pretty-print";
+import { prettyMessageBundle } from "./pretty-print";
+import createIdLookupBundles from "./id-lookup-bundler";
 
 function createParser(): ArgumentParser {
     const parser = new ArgumentParser({
@@ -48,6 +49,14 @@ function main() {
     const fileExtension = args["typescript"] ? "ts" : "js";
     const messageBundleFilename = path.join(args["output-dir"], `bundle.${fileExtension}`);
     io.writeFile(messageBundleFilename, prettyMessageBundle(bundle));
+
+    const idLookup = createIdLookupBundles(args["input-dir"], io);
+    Object.keys(idLookup).forEach(key => {
+        const relativePath = path.relative(args["input-dir"], key);
+        const folder = path.join(args["output-dir"], relativePath);
+        const filename = path.join(folder, `index.${fileExtension}`);
+        io.writeFile(filename, idLookup[key]);
+    });
 }
 
 main();
