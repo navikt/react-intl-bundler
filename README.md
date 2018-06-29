@@ -1,4 +1,4 @@
-# nav-react-intl-bundler (WIP)
+# react-intl-bundler
 
 [![Build Status](https://travis-ci.org/navikt/react-intl-bundler.svg?branch=master)](https://travis-ci.org/navikt/react-intl-bundler)
 
@@ -8,6 +8,9 @@ of the file will be the message. Together with the bundle there will be a messag
 in the application to easely find the ID of different messages.
 
 ## Usage
+
+First install the tool using npm. For usage localy in a project use `npm install @navikt/react-intl-bundler --save-dev`
+or to install globally and used as a CLI-tool you can use `npm install -g @navikt/react-intl-bundle`
 
 Create a folder for all the messages to be used in the application. And run 
 `react-intl-bundler {input-dir} {output-dir}` to crate the message-bundle.
@@ -62,6 +65,12 @@ under `./src` and the tests under `./test`.
 To build/transpile the application run `npm run build` - and to run the tests run `npm run test`. After building the
 application you can run it with `node ./dist/index.js ./example/texts-src ./example/texts-built` which will build
 all the texts for the example-application and store the built file under `./example/texts-built`.
+
+All commits will be built by travis, and for a pull-request to be accepted it needs to have a successfull build.
+
+To release a new version of the application to npmjs use `npm version` on the master-branch. For instance
+`npm version minor` for a minor release and make sure to push both the commit and the tag created. Travis
+will trigger on the release-tag and publish a new versjon to npmjs.
 
 ## Inqueries
 

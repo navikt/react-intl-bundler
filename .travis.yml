@@ -4,3 +4,11 @@ node_js: 8
 script:
   - "npm run test"
   - "npm run build"
+
+deploy:
+  provider: npm
+  email: "navit@nav.no"
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
+  skip_cleanup: true

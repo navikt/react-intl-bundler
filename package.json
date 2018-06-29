@@ -10,7 +10,10 @@
     "build": "tsc",
     "test": "jest --config ./test/jest.config.json"
   },
-  "author": "NAV IT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "NAV",
   "license": "MIT",
   "dependencies": {
     "argparse": "^1.0.10",
