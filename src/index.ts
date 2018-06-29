@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { ArgumentParser } from 'argparse';
 import * as Logger from 'js-logger';
 import * as path from 'path';

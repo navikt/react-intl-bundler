@@ -10,7 +10,7 @@ in the application to easely find the ID of different messages.
 ## Usage
 
 First install the tool using npm. For usage localy in a project use `npm install @navikt/react-intl-bundler --save-dev`
-or to install globally and used as a CLI-tool you can use `npm install -g @navikt/react-intl-bundle`
+or to install globally and used as a CLI-tool you can use `npm install -g @navikt/react-intl-bundler`
 
 Create a folder for all the messages to be used in the application. And run 
 `react-intl-bundler {input-dir} {output-dir}` to crate the message-bundle.
