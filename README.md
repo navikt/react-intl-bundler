@@ -49,13 +49,19 @@ const MyFrontpage = () => (
 
 ### Multiple languages
 
-Currently multiple languages is not supported. But this is a feature we might want in the future. Currently the
-standard build will assume norwegian locale, but this can be overriden using a command-line argument when building
-the bundle, to set your locale...
+Currently multiple languages is not supported. But this is a feature we might want in the future. Currently the  build
+will assume norwegian locale. 
+
 
 ## Development
 
-Hvordan komme i gang med utvikling
+This application is written using TypeScript, which is transpiled to ES2017 during building (and before publishing).
+To get started with developing on this application clone or fork this repository. You will find the source code
+under `./src` and the tests under `./test`. 
+
+To build/transpile the application run `npm run build` - and to run the tests run `npm run test`. After building the
+application you can run it with `node ./dist/index.js ./example/texts-src ./example/texts-built` which will build
+all the texts for the example-application and store the built file under `./example/texts-built`.
 
 ## Inqueries
 
