@@ -1,5 +1,5 @@
 {
-  "name": "nav-react-intl-bundler",
+  "name": "@navikt/react-intl-bundler",
   "version": "1.0.0",
   "description": "Package for building react-intl message-bundles.",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
     "build": "tsc",
     "test": "jest --config ./test/jest.config.json"
   },
-  "author": "Steffen Hageland",
+  "author": "NAV IT",
   "license": "MIT",
   "dependencies": {
     "argparse": "^1.0.10",
