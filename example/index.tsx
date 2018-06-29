@@ -10,8 +10,8 @@ addLocaleData(nbLocale);
 const App = () => (
     <IntlProvider locale="nb" messages={messageBundle}>
         <div>
-            <h1><FormattedMessage id={messages.exampleTitle}/></h1>
-            <p><FormattedMessage id={messages.exampleText}/></p>
+            <h1><FormattedMessage id={messages.frontpageExampleTitle}/></h1>
+            <p><FormattedMessage id={messages.frontpageExampleText}/></p>
         </div>
     </IntlProvider>
 );

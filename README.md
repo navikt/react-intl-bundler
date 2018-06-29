@@ -41,8 +41,8 @@ import messages from './example/texts-built/frontpage'
 
 const MyFrontpage = () => (
     <article>
-        <h1><FormattedMessage id={messages.exampleTitle}/></h1>
-        <p><FormattedMessage id={messages.exampleText}/></p>
+        <h1><FormattedMessage id={messages.frontpageExampleTitle}/></h1>
+        <p><FormattedMessage id={messages.frontpageExampleText}/></p>
     </article>
 );
 ```
