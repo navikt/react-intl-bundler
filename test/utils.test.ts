@@ -1,10 +1,11 @@
+import * as path from 'path';
 import * as Utils from './../src/utils';
 
 describe('utils', () => {
     const list = [
-        { key: 'val1', key2: 'val2',  key3: 'val3'},
-        { key: 'val1', key2: 'val5',  key3: 'val6'},
-        { key: 'val1', key2: 'val8',  key3: 'val9'},
+        { key: 'val1', key2: 'val2', key3: 'val3' },
+        { key: 'val1', key2: 'val5', key3: 'val6' },
+        { key: 'val1', key2: 'val8', key3: 'val9' },
     ];
     describe('groupBy', () => {
         it('group by function', () => {
@@ -25,7 +26,7 @@ describe('utils', () => {
     describe('toObject', () => {
         it('should add key to object', () => {
             const result = Utils.toObject({}, ['key', 'value']);
-            expect(result).toEqual({key: 'value'});
+            expect(result).toEqual({ key: 'value' });
         });
     });
 
@@ -49,7 +50,7 @@ describe('utils', () => {
                 'output',
                 'input/folder/another',
                 'myfile.txt'
-            )).toBe('output\\folder\\another\\myfile.txt');
+            )).toBe(['output', 'folder', 'another', 'myfile.txt'].join(path.sep));
         });
     });
 });
