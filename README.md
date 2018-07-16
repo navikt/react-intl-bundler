@@ -23,7 +23,7 @@ import React from 'react';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import nbLocale from 'react-intl/locale-data/nb';
 
-import messageBundle from './example/texts-built/bundle.js'
+import messageBundle from './example/texts-built/bundle.ts'
 
 addLocaleData(nbLocale);
 
@@ -41,7 +41,7 @@ And in a sub-component you could then use the message-id from the built files by
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import messages from './example/texts-built/frontpage'
+import messages from './example/texts-built/frontpage/intl.ts'
 
 const MyFrontpage = () => (
     <article>
@@ -50,6 +50,10 @@ const MyFrontpage = () => (
     </article>
 );
 ```
+
+## Filenames and Locales
+The filename determines the active locale for any given file, e.g `named.file_en.txt` indicates a text file with english locale. 
+The default locale for any file without a explicit locale is norwegian ('nb').
 
 ## Development
 
