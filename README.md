@@ -28,7 +28,7 @@ import messageBundle from './example/texts-built/bundle.js'
 addLocaleData(nbLocale);
 
 const App = () => (
-    <IntlProvider locale="nb" messages={messageBundle}>
+    <IntlProvider locale="nb" messages={messageBundle.nb}>
         <MyApplication />
     </IntlProvider>
 );
@@ -50,12 +50,6 @@ const MyFrontpage = () => (
     </article>
 );
 ```
-
-### Multiple languages
-
-Currently multiple languages is not supported. But this is a feature we might want in the future. Currently the  build
-will assume norwegian locale. 
-
 
 ## Development
 
