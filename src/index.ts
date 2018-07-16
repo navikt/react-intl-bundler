@@ -2,62 +2,58 @@
 import { ArgumentParser } from 'argparse';
 import * as Logger from 'js-logger';
 import * as path from 'path';
-import { IOImpl } from "./io";
-import createMessageBundle from "./message-bundler";
-import { prettyMessageBundle } from "./pretty-print";
-import createIdLookupBundles from "./id-lookup-bundler";
+import IO from './io';
+import IntlFile from './intl-file';
+import { writeBundle } from './pretty-print';
+import { findOutputFilename } from './utils';
+import { createIdLookupBundles, createMessageBundle } from './bundlers';
 
 function createParser(): ArgumentParser {
     const parser = new ArgumentParser({
         addHelp: true,
-        description: "Reads a set of text-files and creates a text-bundle for react-intl. The output is a bundle to be used wit hthe intl-provider and a ID-lookup to be used in the application."
+        description: 'Reads a set of text-files and creates a text-bundle for react-intl. The output is a bundle to be used with the intl-provider and a ID-lookup to be used in the application.'
     });
 
-    parser.addArgument("input-dir", {
-        help: "Relative url to the directory where the text-files are stored."
+    parser.addArgument('input-dir', {
+        help: 'Relative url to the directory where the text-files are stored.'
     });
 
-    parser.addArgument("output-dir", {
-        help: "Relative url to the directory where the bundle should be created."
+    parser.addArgument('output-dir', {
+        help: 'Relative url to the directory where the bundle should be created.'
     });
 
-    parser.addArgument("--typescript", {
-        help: "Output the file as TypeScript",
+    parser.addArgument('--typescript', {
+        help: 'Output the file as TypeScript',
         required: false,
         defaultValue: false,
-        action: "storeTrue"
+        action: 'storeTrue'
     });
 
-    parser.addArgument(["-v", "--verbose"], {
-        help: "Enable verbose logging",
+    parser.addArgument(['-v', '--verbose'], {
+        help: 'Enable verbose logging',
         required: false,
         defaultValue: false,
-        action: "storeTrue"
+        action: 'storeTrue'
     });
 
     return parser;
 }
 
-function main() {
-    const io = new IOImpl();
-    const args = createParser().parseArgs();
-    Logger.useDefaults();
-    Logger.setLevel(args['verbose'] ? Logger.INFO : Logger.ERROR);
+const args = createParser().parseArgs();
+Logger.useDefaults();
+Logger.setLevel(args['verbose'] ? Logger.INFO : Logger.ERROR);
 
-    const files = io.getAllFilepaths(args['input-dir']);
-    const bundle = { nb: createMessageBundle(files, io) };
+const files: IntlFile[] = IO.getAllFilepaths(args['input-dir']);
+Logger.info(`Found ${files.length} intl-files`);
+const bundle = createMessageBundle(files);
 
-    const fileExtension = args["typescript"] ? "ts" : "js";
-    const messageBundleFilename = path.join(args["output-dir"], `bundle.${fileExtension}`);
-    io.writeFile(messageBundleFilename, prettyMessageBundle(bundle));
+const fileExtension = args['typescript'] ? 'ts' : 'js';
+const messageBundleFilename = path.join(args['output-dir'], `bundle.${fileExtension}`);
+writeBundle(messageBundleFilename, bundle);
 
-    const idLookup = createIdLookupBundles(args["input-dir"], io);
-    Object.keys(idLookup).forEach(key => {
-        const relativePath = path.relative(args["input-dir"], key);
-        const folder = path.join(args["output-dir"], relativePath);
-        const filename = path.join(folder, `index.${fileExtension}`);
-        io.writeFile(filename, idLookup[key]);
+const idLookupBundles = createIdLookupBundles(files);
+Object.keys(idLookupBundles)
+    .forEach((currentPath) => {
+        let filename = findOutputFilename(args['input-dir'], args['output-dir'], currentPath, `intl.${fileExtension}`);
+        writeBundle(filename, idLookupBundles[currentPath]);
     });
-}
-
-main();
