@@ -7,6 +7,10 @@ const texts = {
         "frontpage.header": "Frontpage example text"
     },
     "en": {
+        "frontpage.header": "Frontpage example text",
+        "frontpage.just.en.header": "Frontpage example text"
+    },
+    "fr": {
         "frontpage.header": "Frontpage example text"
     }
 };

@@ -2,6 +2,12 @@ import * as Logger from 'js-logger';
 import IntlFile from './intl-file';
 import { camelCase, groupBy, toObject } from './utils';
 
+export interface IntlBundle {
+    [locale: string]: {
+        [textKey: string]: string
+    }
+}
+
 function groupmapping<T>(groupingFn: (T) => string | string, mappingFn: (element: T) => [string, any], list: T[]) {
     const grouped = list.reduce(groupBy(groupingFn), {});
     const bundle = Object.keys(grouped)
@@ -26,7 +32,7 @@ export function createIdLookupBundles(files: IntlFile[]) {
     );
 }
 
-export function createMessageBundle(files: IntlFile[]): Object {
+export function createMessageBundle(files: IntlFile[]): IntlBundle {
     return groupmapping(
         (file: IntlFile) => file.getLanguage(),
         (intlFile) => [intlFile.getKey(), intlFile.getContent()],
