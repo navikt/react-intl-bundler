@@ -32,7 +32,7 @@ export function findErrors(bundle: IntlBundle): Errors {
         }, {});
 }
 
-export function verify(bundle: IntlBundle) {
+export function verify(bundle: IntlBundle): number {
     const errors = findErrors(bundle);
 
     if (hasErrors(errors)) {
@@ -42,6 +42,7 @@ export function verify(bundle: IntlBundle) {
                 Logger.error(`Keys missing in '${locale}':\n${keys}\n`)
             });
         Logger.error(`Mismatch between locales. This ain't gonna fly in production...\n\n`);
-        // throw new Error(`Mismatch between locales. This ain't gonna fly in production...`);
+        return 1;
     }
+    return 0;
 }

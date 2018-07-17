@@ -109,12 +109,23 @@ describe('verify', () => {
     });
 
     describe('verify', () => {
-        const bundle = {
-            nb: { key1: 'content' },
-            en: { key2: 'content' }
-        };
-        it('should should log errors', () => {
-            expect(() => verify(bundle)).toThrow();
+
+        it('should return exitcode 1 on errors', () => {
+            const bundle = {
+                nb: { key1: 'content' },
+                en: { key2: 'content' }
+            };
+
+            expect(verify(bundle)).toBe(1);
+        });
+
+        it('should return exitcode 0 if ok', () => {
+            const bundle = {
+                nb: { key1: 'content' },
+                en: { key1: 'content' }
+            };
+
+            expect(verify(bundle)).toBe(0);
         });
     });
 });

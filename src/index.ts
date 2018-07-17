@@ -56,7 +56,8 @@ Logger.info(`Found ${files.length} intl-files`);
 const bundle: IntlBundle = createMessageBundle(files);
 
 if (!args.no_verify) {
-    verify(bundle);
+    const exitCode = verify(bundle);
+    exitCode && process.exit(exitCode);
 }
 
 const fileExtension = args['typescript'] ? 'ts' : 'js';
