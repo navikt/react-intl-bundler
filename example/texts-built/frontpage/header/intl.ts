@@ -1,5 +1,6 @@
 const texts = {
-    "frontpageHeader": "frontpage.header"
+    "frontpageHeader": "frontpage.header",
+    "frontpageJustEnHeader": "frontpage.just.en.header"
 };
 
 export default texts;
