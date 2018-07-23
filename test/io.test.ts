@@ -1,6 +1,6 @@
 import IO from './../src/io';
 import IntlFile from '../src/intl-file';
-import fs from 'fs';
+import fs from 'fs-extra';
 
 function unique<T>(list: T[]):T[] {
     return Array.from(new Set(list));
@@ -28,7 +28,7 @@ describe('io', () => {
     });
 
     it('should write to file', () => {
-        const path = './test/tmp/tmp.txt';
+        const path = './test/tmp/tmp/tmp/tmp.txt';
         const content = 'TEST-CONTENT';
 
         IO.writeFile(path, content);
@@ -36,7 +36,6 @@ describe('io', () => {
         expect(fs.existsSync(path)).toBeTruthy();
         expect(fs.readFileSync(path, 'utf-8')).toBe(content);
 
-        fs.unlinkSync(path);
-        fs.rmdirSync('./test/tmp');
+        fs.removeSync('./test/tmp');
     });
 });
