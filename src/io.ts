@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as Logger from 'js-logger';
 import IntlFile from './intl-file';
@@ -26,10 +26,7 @@ export class IO {
     }
 
     static writeFile(filePath: string, content: string) {
-        if (!fs.existsSync(path.parse(filePath).dir)) {
-            fs.mkdirSync(path.parse(filePath).dir);
-        }
-        fs.writeFileSync(filePath, content);
+        fs.outputFileSync(filePath, content);
     }
 }
 
