@@ -1,6 +1,6 @@
 {
   "name": "@navikt/react-intl-bundler",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Package for building react-intl message-bundles.",
   "repository": "github:navikt/react-intl-bundler",
   "homepage": "https://github.com/navikt/react-intl-bundler",
