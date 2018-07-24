@@ -44,6 +44,13 @@ function createParser(): ArgumentParser {
         action: 'storeTrue'
     });
 
+    parser.addArgument('--no-lookup', {
+        help: 'Skip creating id-lookup files',
+        required: false,
+        defaultValue: false,
+        action: 'storeTrue'
+    });
+
     return parser;
 }
 
@@ -64,9 +71,11 @@ const fileExtension = args['typescript'] ? 'ts' : 'js';
 const messageBundleFilename = path.join(args['output-dir'], `bundle.${fileExtension}`);
 writeBundle(messageBundleFilename, bundle);
 
-const idLookupBundles = createIdLookupBundles(files);
-Object.keys(idLookupBundles)
-    .forEach((currentPath) => {
-        let filename = findOutputFilename(args['input-dir'], args['output-dir'], currentPath, `intl.${fileExtension}`);
-        writeBundle(filename, idLookupBundles[currentPath]);
-    });
+if (!args.no_lookup) {
+    const idLookupBundles = createIdLookupBundles(files);
+    Object.keys(idLookupBundles)
+        .forEach((currentPath) => {
+            const filename = findOutputFilename(args['input-dir'], args['output-dir'], currentPath, `intl.${fileExtension}`);
+            writeBundle(filename, idLookupBundles[currentPath]);
+        });
+}
