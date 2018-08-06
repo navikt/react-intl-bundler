@@ -8,7 +8,7 @@ function unique<T>(list: T[]):T[] {
 
 describe('io', () => {
     it('should read file', () => {
-        expect(IO.getFileContent('./test/test-files/content.txt')).toBe('FILECONTENT\n');
+        expect(IO.getFileContent('./test/test-files/content.txt')).toBe('FILECONTENT');
     });
 
     it('should list all files in folder', () => {

@@ -22,7 +22,7 @@ export class IO {
     }
 
     static getFileContent(file: string): string {
-        return fs.readFileSync(file, "utf-8");
+        return fs.readFileSync(file, "utf-8").trim();
     }
 
     static writeFile(filePath: string, content: string) {
