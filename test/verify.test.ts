@@ -127,5 +127,12 @@ describe('verify', () => {
 
             expect(verify(bundle)).toBe(0);
         });
+
+        it('should handle single translation', () => {
+            const bundle = {
+                nb: { key1: 'content', key2: 'content' }
+            };
+            expect(verify(bundle)).toBe(0);
+        });
     });
 });

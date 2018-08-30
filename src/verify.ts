@@ -23,7 +23,7 @@ export function findErrors(bundle: IntlBundle): Errors {
 
     return createPairs(localeKeys)
         .map((pair) => [pair, [...pair].reverse()])
-        .reduce((acc, list) => acc.concat(list))
+        .reduce((acc, list) => acc.concat(list), [])
         .map(verifyPair)
         .reduce((acc, { locale, missing }) => {
             const group = acc[locale] || new Set();
