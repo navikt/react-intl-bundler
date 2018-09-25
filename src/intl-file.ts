@@ -1,7 +1,7 @@
 import * as path from 'path';
 import IO from './io';
 
-const languagePattern = /_(\w+)\.\w+$/;
+const languagePattern = /_([^\W_]+)\.\w+$/;
 
 function findLanguage(path) {
     const match = languagePattern.exec(path);
@@ -11,7 +11,7 @@ function findLanguage(path) {
     return 'nb';
 }
 
-const removeLanguagePattern = /(?:_\w+)?\.\w+$/;
+const removeLanguagePattern = /(?:_[^\W_]+)?\.\w+$/;
 
 function findKey(path) {
     return path.replace(removeLanguagePattern, '');
